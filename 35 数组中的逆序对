@@ -1,5 +1,5 @@
 知识点：
-归并排序：
+归并排序：参考 归并排序 - 如果天空不死 - 博客园 https://www.cnblogs.com/skywang12345/p/3602369.html ； 《大话》
 class Solution {
 public:
 void mergeSort(vector<int>&a){
