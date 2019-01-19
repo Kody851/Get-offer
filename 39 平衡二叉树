@@ -1,0 +1,37 @@
+对每个节点计算左右子树的深度，每个节点会重复遍历多次，因此下面的直接法效率低：
+class Solution {
+public:
+    bool IsBalanced_Solution(TreeNode* pRoot) {
+        if(!pRoot) return true;
+        if(depth(pRoot->left)-depth(pRoot->right)>1||depth(pRoot->left)-depth(pRoot->right)<-1)
+            return false;
+        else return IsBalanced_Solution(pRoot->left)&&IsBalanced_Solution(pRoot->right);
+    }
+    int depth(TreeNode* pRoot){
+        if(!pRoot) return 0;
+        return max(depth(pRoot->left),depth(pRoot->right))+1;
+    }
+};
+每个节点遍历一次，后序遍历，遍历到一个节点，其左右子树已经遍历  依次自底向上判断，每个节点只需要遍历一次
+class Solution {
+public:
+    bool IsBalanced_Solution(TreeNode* pRoot) {
+        int dep=0;
+        return IsBalanced(pRoot, dep);
+    }
+    bool IsBalanced(TreeNode* pRoot, int &dep){
+        if(!pRoot){
+            dep=0;
+            return true;
+        }
+        int left=0,right=0;
+        if(IsBalanced(pRoot->left,left)&&IsBalanced(pRoot->right,right)){//实际调用，此处left前不能加&
+            if(abs(left-right)>1) return false;//根节点处进行一些判断和赋值操作
+            else{
+                dep=left>right ? left+1 : right+1;
+                return true;
+            }
+        }
+        return false;
+    }
+};
