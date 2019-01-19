@@ -1,0 +1,22 @@
+和41题思路类似，双指针
+class Solution {//双指针
+public:
+    vector<vector<int> > FindContinuousSequence(int sum) {
+        vector<vector<int> >res;
+        int i=1, j=2;
+        while(i<j){
+            int SumiToj=(i+j)*(j-i+1)/2;//梯形公式
+            vector<int>tmp;
+            if(SumiToj==sum){
+                for(int k=i;k<=j;k++){
+                    tmp.push_back(k);
+                }
+                res.push_back(tmp);
+                j++;//找完一组，找下一组。
+            }
+            else if(SumiToj<sum) j++;
+            else i++;
+        }
+        return res;
+    }
+};
