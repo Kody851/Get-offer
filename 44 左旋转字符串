@@ -1,1 +1,53 @@
+1、技巧：左部分翻转，右部分翻转，整体翻转，搞定！
+class Solution {
+public:
+    string LeftRotateString(string str, int n) {
+        int size=str.size();
+        if(size==0||n<0) return str;
+        if(n>size) n=n%size;
+        reverse(str, 0, n-1);
+        reverse(str, n, size-1);
+        reverse(str, 0, size-1);
+        return str;
+    }
+    void reverse(string &str, int i, int j){
+        if(i>=j) return;
+        while(i<j){
+            char tmp=str[i];
+            str[i]=str[j];
+            str[j]=tmp;
+            i++;
+            j--;
+        }
+    }
+};
 
+2、两部分分别赋值
+class Solution {
+public:
+    string LeftRotateString(string str, int n) {
+        int size=str.size();
+        if(size==0||n<0) return str;
+        if(n>size) n=n%size;
+        string res="";//辅助变量
+        for(int i=n;i<size;i++){
+            res+=str[i];
+        }
+        for(int i=0;i<n;i++){
+            res+=str[i];
+        }
+        return res;
+    }
+};
+
+3、拼接、取值
+class Solution {
+public:
+    string LeftRotateString(string str, int n) {
+        int size=str.size();
+        if(size==0||n<0) return str;
+        if(n>size) n=n%size;
+        str+=str;//拼接
+        return str.substr(n,size);//使用函数 substr
+    }
+};
