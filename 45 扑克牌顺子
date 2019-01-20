@@ -1,0 +1,19 @@
+//求0的个数，排序，若有对子则false，计算相邻数字大于1的差值总数，与0的个数比较
+class Solution {
+public:
+    bool IsContinuous( vector<int> numbers ) {
+        if(numbers.empty()) return false;
+        sort(numbers.begin(),numbers.end());
+        int NumOf0=0;
+        for(int i=0;i<4;i++){
+            if(numbers[i]==0) NumOf0++;
+        }
+        int count=0;
+        for(int i=NumOf0+1;i<numbers.size();i++){
+            if(numbers[i]==numbers[i-1]) return false;
+            count+=numbers[i]-numbers[i-1]-1;
+        }
+        if(count>NumOf0) return false;
+        return true;
+    }
+};
