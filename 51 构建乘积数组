@@ -8,12 +8,12 @@ public:
         vector<int>B(n);
         if(A.empty()) return B;
         B[0]=1;
-        for(int i=1;i<n;i++){
+        for(int i=1;i<n;i++){//下三角
             B[i]=B[i-1]*A[i-1];
         }
         int tmp=1;
-        for(int i=n-2;i>=0;i--){
-            tmp*=A[i+1];
+        for(int i=n-2;i>=0;i--){//上三角
+            tmp*=A[i+1];//先用tmp过渡
             B[i]*=tmp;
         }
         return B;
