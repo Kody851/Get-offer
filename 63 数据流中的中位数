@@ -16,7 +16,8 @@ push_heap(a.begin(),a.end(),less<int>());
 //删除堆顶元素
 pop_heap(a.begin(),a.end(),less<int>());
 a.pop_back();
-
+博客：https://blog.csdn.net/morewindows/article/details/6709644
+https://blog.csdn.net/morewindows/article/details/6967409
 
 最优解： 最大堆与最小堆，将数组平均分为两份，分别作为最大堆与最小堆，最大堆的元素全部小于最小堆。通过两堆的堆顶确定中位数。
 class Solution {
