@@ -1,0 +1,37 @@
+题目描述
+给定一棵二叉搜索树，请找出其中的第k小的结点。例如， （5，3，7，2，4，6，8）    中，按结点数值大小顺序第三小结点的值为4。
+中序遍历二叉搜索树，即是按从小到大排列。
+自然想到：
+class Solution {
+public:
+    TreeNode* KthNode(TreeNode* pRoot, int k)
+    {
+        if(!pRoot||k<=0) return NULL;
+        vector<TreeNode*>node;
+        helper(pRoot,node);
+        if(k>node.size()) return NULL;//必须要判断
+        return node[k-1];
+    }
+    void helper(TreeNode* pRoot, vector<TreeNode*>&node){
+        if(!pRoot) return;
+        helper(pRoot->left,node);
+        node.push_back(pRoot);
+        helper(pRoot->right,node);
+    }
+};
+但是这样要全部遍历，最优解只需遍历到第K小的即可：
+class Solution {//一边中序遍历，一边计数，之前的节点不用储存
+public:
+    int count=0;
+    TreeNode* KthNode(TreeNode* pRoot,  int k)
+    {
+        if(pRoot){
+            TreeNode*tmp=KthNode(pRoot->left,k);
+            if(tmp) return tmp;//正向递归时，tmp一直为NULL；找到pRoot之后反向递归，tmp为真，不停向上递归
+            if(++count==k) return pRoot;
+            tmp=KthNode(pRoot->right,k);
+            if(tmp) return tmp;//这里可以不判断if(tmp)，因为tmp为空时会到语句return NULL;效果相同
+        }
+        return NULL;
+    }
+};
