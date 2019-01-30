@@ -20,7 +20,7 @@ public:
 class Solution {//动态规划，需要辅助空间
 public:
     int Fibonacci(int n) {
-        vector<int>dp(n+1);
+        vector<int>dp(n+1);//后续用到dp[x] 需要事前声明空间
         dp[0]=0;
         dp[1]=1;
         for(int i=2;i<=n;i++){
