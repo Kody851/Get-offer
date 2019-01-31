@@ -17,7 +17,7 @@ public:
     }
 }; 
 要求相对位置不变：
-class Solution {
+class Solution {//后指针需要从与i相邻开始
 public:
     void reOrderArray(vector<int> &array) {
         int n=array.size();
