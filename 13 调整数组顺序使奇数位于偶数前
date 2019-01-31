@@ -24,7 +24,7 @@ public:
         if(n==0) return;
         int i=0, j=1;
         while(j<n){
-            while((array[i]&0x1)==1) i++;//i指偶数
+            while(i<n&&(array[i]&0x1)==1) i++;//i指偶数,防止全奇数时i溢出
             j=i+1;
             while(j<n&&(array[j]&0x1)==0) j++;//j指i后的奇数
             if(j>=n) break;//说明找到最后也没找到奇数，循环结束
