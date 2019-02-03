@@ -31,7 +31,7 @@ public:
         cloneCur=cloneHead->next;
         while(cur){
             if(cur->random)
-                cloneCur->random=mp[cur->random];
+                cloneCur->random=mp[cur->random];//O(1)时间
             cur=cur->next;
             cloneCur=cloneCur->next;
         }
