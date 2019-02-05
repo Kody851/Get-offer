@@ -36,3 +36,38 @@ public:
         return res;
     }
 }
+
+3、Partition函数
+class Solution {
+public:
+    vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
+        vector<int>res;
+        if(input.empty()||k<=0||k>input.size()) return res;
+        int start=0,end=input.size()-1;
+        int index=Partition(input,start,end);
+        while(index!=k-1){//这里用k-1，表示index左边有k-1个，连上index共k个数。防止k=input.size()-1时出现异常
+            if(index>k-1){
+                end=index-1;
+                index=Partition(input,start,end);
+            }
+            if(index<k-1){
+                start=index+1;
+                index=Partition(input,start,end);
+            }
+        }
+        for(int i=0;i<k;i++) res.push_back(input[i]);
+        return res;
+    }
+    int Partition(vector<int> &input, int start, int end){
+        int small=start-1;
+        for(int i=start;i<end;i++){
+            if(input[i]<input[end]){
+                small++;
+                if(small!=i) swap(input[small],input[i]);
+            }
+        }
+        small++;
+        swap(input[small],input[end]);
+        return small;
+    }
+};
