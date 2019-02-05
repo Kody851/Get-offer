@@ -1,0 +1,38 @@
+题目描述
+输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。
+
+1、最大堆
+class Solution {
+public:
+    vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
+        if(input.empty()||k<=0||k>input.size()) return vector<int>();
+        vector<int>res(input.begin(),input.begin()+k);
+        make_heap(res.begin(),res.end(),less<int>());//最大堆
+        for(int i=k;i<input.size();i++){
+            if(input[i]<res[0]){//若小，把堆顶去掉，新数入堆
+                pop_heap(res.begin(),res.end(),less<int>());
+                res.pop_back();
+                res.push_back(input[i]);
+                push_heap(res.begin(),res.end(),less<int>());
+            }
+        }
+        //sort_heap(res.begin(),res.end());//排序
+        return res;
+    }
+};
+
+2、最小堆
+class Solution {
+public:
+    vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
+        vector<int>res;
+        if(input.empty()||k<=0||k>input.size()) return res;
+        make_heap(input.begin(),input.end(),greater<int>());//建立最小堆
+        for(int i=0;i<k;i++){//k次弹出堆顶，即最小的k个数字
+            res.push_back(input[0]);
+            pop_heap(input.begin(),input.end(),greater<int>());
+            input.pop_back();
+        }
+        return res;
+    }
+}
