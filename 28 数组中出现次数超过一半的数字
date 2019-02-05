@@ -16,7 +16,7 @@ public:
         return 0;
     }
 };
-2、数组  时间O(n) 空间无
+2、数组  时间O(n) 空间无 （最优解！）
 class Solution {
 public:
     int MoreThanHalfNum_Solution(vector<int> numbers) {
