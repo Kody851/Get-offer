@@ -69,7 +69,7 @@ public:
         return res;
     }
 };
-3、最小堆
+3、最小堆 O(klogn)
 class Solution {
 public:
     vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
