@@ -1,6 +1,6 @@
 知识点：二分法的start与end在循环条件中包括“=”
 1、
-class Solution {//二分法
+class Solution {//二分法 O(logn)
 public:
     int GetNumberOfK(vector<int> data ,int k) {
         if(data.empty()) return 0;
