@@ -37,3 +37,26 @@ public:
         return false;
     }
 };
+//更规范:
+class Solution {
+public:
+    bool IsBalanced_Solution(TreeNode* pRoot) {
+        int dep=0;
+        return IsBalanced(pRoot, dep);
+    }
+    bool IsBalanced(TreeNode* pRoot, int &dep){
+        if(!pRoot){
+            dep=0;
+            return true;
+        }
+        int left=0, right=0;
+        if(IsBalanced(pRoot->left,left)&&IsBalanced(pRoot->right,right)){
+            int dif=left-right;
+            if(dif<=1&&dif>=-1){
+                dep=dif>0 ? left+1 : right+1;
+                return true;
+            }
+        }
+        return false;
+    }
+};
