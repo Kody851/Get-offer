@@ -51,3 +51,13 @@ public:
         return str.substr(n,size);//使用函数 substr
     }
 };
+4、substr
+class Solution {
+public:
+    string LeftRotateString(string str, int n) {
+        int len=str.size();
+        if(n<=0||len==0) return str;
+        if(n>len) n=n%len;
+        return str.substr(n,len-n)+str.substr(0,n);
+    }
+};
