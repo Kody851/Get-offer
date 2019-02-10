@@ -18,3 +18,25 @@ public:
         return i;//返回跳出循环时的i,即最后一个被设置为-1的元素
     }
 };
+class Solution {
+public:
+    int LastRemaining_Solution(int n, int m)
+    {
+        vector<int>a(n);
+        int i=-1,NumOfDelete=0,step=-1;
+        while(NumOfDelete<n){//删除元素个数，全删掉，i指向最后一个删掉的
+            i++;
+            if(i==n) i=0;
+            if(a[i]==-1){
+                continue;
+            }
+            step++;
+            if(step==m-1){
+                a[i]=-1;
+                NumOfDelete++;
+                step=-1;
+            }
+        }
+        return i;
+    }
+};
