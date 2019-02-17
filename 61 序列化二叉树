@@ -65,7 +65,7 @@ public:
         int num=0;
         while(*str!='\0'&&*str!=',')
         {
-            num=num*10+((*str)-'0');
+            num=num*10+((*str)-'0');//对于两位数及以上，需要累加
             str++;
         }
         TreeNode* root=new TreeNode(num);
