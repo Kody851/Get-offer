@@ -55,3 +55,20 @@ public:
         return target;
     }
 };
+改编：
+class Solution {
+public:
+    int count=1;
+    TreeNode* KthNode(TreeNode* pRoot, int k)
+    {
+        if(!pRoot||k<=0) return NULL;
+        TreeNode*target=NULL;
+        if(pRoot->left) target=KthNode(pRoot->left,k);
+        if(!target){
+            if(count==k) target=pRoot;
+            count++;
+        }
+        if(!target&&pRoot->right) target=KthNode(pRoot->right,k);
+        return target;
+    }
+};
