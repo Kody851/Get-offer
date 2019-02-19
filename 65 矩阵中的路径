@@ -27,7 +27,7 @@ public:
             visited[i*cols+j]=true;
             flag=hasPathCore(matrix,rows,cols,str,i-1,j,k,visited)||hasPathCore(matrix,rows,cols,str,i+1,j,k,visited)
                 ||hasPathCore(matrix,rows,cols,str,i,j-1,k,visited)||hasPathCore(matrix,rows,cols,str,i,j+1,k,visited);
-            if(flag==true){
+            if(flag==false){
                 k--;
                 visited[i*cols+j]=false;
             }
