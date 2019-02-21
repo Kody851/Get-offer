@@ -22,3 +22,22 @@ public:
         helper(pRootOfTree->right, pre);
     }
 };
+
+有时间检查一下以下思路：
+class Solution {
+public:
+    TreeNode* Convert(TreeNode* pRootOfTree)
+    {
+        if(!pRootOfTree) return NULL;
+        TreeNode*left=Convert(pRootOfTree->left);
+        TreeNode*cur=left;
+        while(cur->right) cur=cur->right;
+        cur->right=pRootOfTree;
+        pRootOfTree->left=cur;
+        TreeNode*right=Convert(pRootOfTree->right);
+        pRootOfTree->right=right;
+        right->left=pRootOfTree;
+        
+        return left;
+    }
+};
