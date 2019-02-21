@@ -16,8 +16,8 @@ public:
         if(root->val==expectNumber&&!root->left&&!root->right) res.push_back(path);//值为expectNumber，且是叶节点
         //不是叶节点
         if(root->left) FindPathCore(root->left,expectNumber-root->val,res,path);
-        if(root->right) FindPathCore(root->right,expectNumber-root->val,res,path);
-        //是叶节点了，但取值不对，则返回上一节点
+        if(root->right) FindPathCore(root->right,expectNumber-root->val,res,path);//前序遍历
+        //是叶节点了，但取值不对，则返回上一节点; 即使找到了满足的路径，也要删除节点，返回上一个。
         path.pop_back();
     }
 };
