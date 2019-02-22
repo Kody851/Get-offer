@@ -6,7 +6,7 @@ public:
     int FirstNotRepeatingChar(string str) {
         int n=str.size();
         if(n==0) return -1;
-        unordered_map<char,int>mp;
+        unordered_map<char,int>mp;//map不要指定大小，map(n,0)是错的！可以仅初始化mp(0)
         for(int i=0;i<n;i++){
             mp[str[i]]++;
         }
