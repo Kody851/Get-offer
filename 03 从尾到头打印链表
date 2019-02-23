@@ -23,9 +23,7 @@ public:
     vector<int>res;
     vector<int> printListFromTailToHead(ListNode* head) {
         if(!head) return res;
-        if(head){
-            if(head->next) printListFromTailToHead(head->next);
-        }
+        if(head->next) printListFromTailToHead(head->next);
         res.push_back(head->val);
         return res;
     }
