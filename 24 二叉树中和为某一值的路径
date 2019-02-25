@@ -10,7 +10,7 @@ public:
         FindPathCore(root,expectNumber,res,path);
         return res;
     }
-    void FindPathCore(TreeNode* root,int expectNumber, vector<vector<int>>&res, vector<int>&path){
+    void FindPathCore(TreeNode* root,int expectNumber, vector<vector<int>>&res, vector<int>path){
         if(!root) return;
         path.push_back(root->val);
         if(root->val==expectNumber&&!root->left&&!root->right) res.push_back(path);//值为expectNumber，且是叶节点
