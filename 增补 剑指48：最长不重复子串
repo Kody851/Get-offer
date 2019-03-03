@@ -51,8 +51,8 @@ public:
             if(dp[i]>maxlen) maxlen=dp[i];
         }
         for(int i=0;i<n;i++){
-        if(dp[i]==maxlen){
-            res.push_back(s.substr(i-maxlen+1,maxlen));//每个最大不重复子串
+            if(dp[i]==maxlen){
+                res.push_back(s.substr(i-maxlen+1,maxlen));//每个最大不重复子串
         }
         return res;
     }
