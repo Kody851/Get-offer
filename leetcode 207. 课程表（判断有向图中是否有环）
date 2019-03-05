@@ -39,10 +39,85 @@ for(iter=vec.begin();iter!=vec.end();iter++);
 原文：https://blog.csdn.net/linxihe123/article/details/70173476 
 --------------------- 
 @知识点2：图的BFS
-
+void BFS(int num, vector<pair<int, int>>&edge, vector<int>vexs){//给了节点数组
+    vector<vector<int>> graph(num, vector<int>(0));//邻接表
+    for(auto i:edge) graph[i.first].push_back(i.second);
+    queue<int>q;
+    bool *visited[num];
+    memset(visited,false,num);
+    for(int i=0;i<num;i++){
+        if(!visited[i]){
+            visited[i]=true;
+            cout<<vexs[i];
+            q.push(i);
+            while(!q.empty()){
+                int temp = q.front();
+                q.pop();
+                for(auto j : graph[temp]){
+                    if(!visited[j]){
+                        visited[j]=true;
+                        cout<<vexs[j];
+                        q.push(j);
+                    }
+                }
+            }
+        }
+    }
+}
+void BFS(int num, vector<vector<int>>& edge, vector<int>vexs){//给了节点数组
+    vector<vector<int>>mat(num, vector<int>(num))={0};//邻接矩阵
+    for(int i=0;i<num;i++){
+        for(int j=0;j<nums;j++){
+            mat[edge[i][0]][edge[i][1]]=1;
+        }
+    }
+    queue<int>q;
+    bool *visited[num];
+    memset(visited,false,num);
+    for(int i=0;i<num;i++){
+        if(!visited[i]){
+            visited[i]=true;
+            cout<<vexs[i];
+            q.push(i);
+            while(!q.empty()){
+                int temp = q.front();
+                q.pop();
+                for(int j=0;j<num;j++){
+                    if(!visited[j]&&mat[i][j]==1){
+                        visited[j]=true;
+                        cout<<vexs[j];
+                        q.push(j);
+                    }
+                }
+            }
+        }
+    }
+}
 --------------------- 
 @知识点2：图的DFS
-
+void DFS(int num, vector<vector<int>>& edge, vector<int>vexs){//给了节点数组
+    vector<vector<int>>mat(num, vector<int>(num))={0};//邻接矩阵
+    for(int i=0;i<num;i++){
+        for(int j=0;j<nums;j++){
+            mat[edge[i][0]][edge[i][1]]=1;
+        }
+    }
+    bool *visited[num];
+    int i;
+    for(i=0;i<num;i++) visited[i]=false;
+    for(i=0;i<num;i++) {
+        if(!visited[i]) DFScore(mat,vexs,i);
+    }
+}
+void DFScore(vector<vector<int>>mat, vector<int>vexs,int i){
+    visited[i]=true;
+    cout<<vexs[i];
+    int j;
+    for(int j=0;j<nums;j++){
+        if(mat[i][j]==1&&!visited[j]) DFScore(mat,vexs,j);
+    }
+    
+}
 --------------------- 
 class Solution {
 public:
@@ -78,3 +153,4 @@ public:
         return true;
     }
 };
+若本题是无向图，则统计“度”，从度为1的顶点开始BFS，访问之后度减一，最终若有度大于1的顶点，则说明存在环.
