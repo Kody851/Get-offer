@@ -20,6 +20,65 @@ public:
         return res;
     }
 };
+堆排序手动实现：
+void Maxheapsort(vector<int>&a)
+{
+	int n=a.size();
+    //先建堆，最大堆的排序是递增的
+    for (int i =n/2-1; i>=0; i--) MaxHeap(a, i, n-1);//只需处理有孩子的节点
+    //堆排序
+    for (int i=n-1; i>=1; i--)
+	{
+		swap(a[i], a[0]);
+		MaxHeap(a, 0, i-1);
+	}
+}
+//  从i节点开始调整,n为节点总数 从0开始计算 i节点的子节点为 2*i+1, 2*i+2
+void MaxHeap(vector<int>&a, int i, int m)//i为要处理的节点标号，m为最后一个节点编号
+{
+    int j, temp;
+	temp = a[i];
+    for(j=2*i+1;j<=m;j=2*j+1)//左孩子标号为2j+1
+	{
+		if (j<m&&a[j]<a[j+1])//在左右孩子中找最小的
+			j++;
+		if(temp>=a[j]) break;
+		a[i] = a[j];     //把较小的子结点往上移动,替换它的父结点
+		i = j;
+	}
+	a[i] = temp;
+}
+参考：1、大话数据结构P399
+     2、https://blog.csdn.net/morewindows/article/details/6709644 
+class Solution {
+public:
+    vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
+        int n=input.size();
+        if(n==0||k<=0||k>n) return vector<int>();
+        vector<int>res(input.begin(),input.begin()+k);
+        for (int i =k/2-1; i>=0; i--) MaxHeap(res, i, k-1);//建最大堆
+        for(int i=k;i<input.size();i++){
+            if(input[i]<res[0]){//若小，把堆顶去掉，新数入堆
+                res[0]=input[i];
+                MaxHeap(res, 0, k-1);
+            }
+        }
+        return res;
+    }
+    void MaxHeap(vector<int>&a, int i, int m){
+        int j, temp;
+        temp = a[i];
+        for(j=2*i+1;j<=m;j=2*j+1){
+            if (j<m&&a[j]<a[j+1])//在左右孩子中找最小的
+                j++;
+            if(temp>=a[j]) break;
+            a[i] = a[j];     //把较小的子结点往上移动,替换它的父结点
+            i = j;
+        }
+        a[i] = temp;
+    }
+};
+-------------------------------------------------------------------------
 2、最大堆 multiset（红黑树）实现
 class Solution {
 public:
