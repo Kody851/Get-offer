@@ -8,7 +8,7 @@ public:
         vector<int>res;
         int m=matrix.size(), n=matrix[0].size();
         if(m==0||n==0) return res;
-        int circle=min(m,n)%2==0 ? min(m,n)/2 : min(m,n)/2+1;
+        int circle=min(m,n)%2==0 ? min(m,n)/2 : min(m,n)/2+1;//(min(m,n)+1)/2
         /*行和列中较小者决定圈数，除最后一圈外，每一圈占2行（列），最后一圈可能占2行（列）或1行（列）.
           故若行是偶数，圈数=行数/2，否则=行数/2+1。*/
         for(int i=0;i<circle;i++){
