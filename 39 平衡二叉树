@@ -44,7 +44,7 @@ public:
         int dep=0;
         return IsBalanced(pRoot, dep);
     }
-    bool IsBalanced(TreeNode* pRoot, int &dep){
+    bool IsBalanced(TreeNode* pRoot, int &dep){//在递归中需要更改的参数一定要&引用
         if(!pRoot){
             dep=0;
             return true;
