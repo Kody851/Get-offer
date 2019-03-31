@@ -45,12 +45,12 @@ public:
         //判断是否存在环
         ListNode*p1=pHead;
         ListNode*p2=pHead;
-        while(p1->next){
+        while(p1&&p1->next){
             p1=p1->next->next;
             p2=p2->next;
             if(p1==p2) break;
         }
-        if(!p1->next) return NULL;
+        if(!p1) return NULL;
         //计算环内结点数
         int NumOfCurcle=1;
         ListNode*cur=p1->next;
