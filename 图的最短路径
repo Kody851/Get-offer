@@ -24,7 +24,7 @@ public:
             }
         }
         for(int i = 0;i < times.size();i++){
-            map[times[i][0]][times[i][1]] = times[i][2];//赋权值
+            mat[times[i][0]][times[i][1]] = times[i][2];//赋权值
         }
         
         //距离、标志位的初始化
