@@ -112,7 +112,6 @@ void DFS(int num, vector<vector<int>>& edge, vector<int>vexs){//给了节点数�
 void DFScore(vector<vector<int>>mat, vector<int>vexs,int i){
     visited[i]=true;
     cout<<vexs[i];
-    int j;
     for(int j=0;j<nums;j++){
         if(mat[i][j]==1&&!visited[j]) DFScore(mat,vexs,j);
     }
