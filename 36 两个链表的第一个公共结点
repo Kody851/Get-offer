@@ -33,6 +33,37 @@ public:
         return NULL;//找不到相等节点或者链表为空
     }
 };
+//190413
+class Solution {
+public:
+    ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
+        ListNode*p1=pHead1,*p2=pHead2;
+        int n1=0,n2=0;
+        while(p1){
+            n1++;
+            p1=p1->next;
+        }
+        while(p2){
+            n2++;
+            p2=p2->next;
+        }
+        int dif=n1-n2;
+        ListNode*longlist=pHead1,*shortlist=pHead2;
+        if(dif<0){
+            longlist=pHead2;
+            shortlist=pHead1;
+            dif=-dif;
+        }
+        p1=longlist;
+        p2=shortlist;
+        for(int i=0;i<dif;i++) p1=p1->next;
+        while(p1!=p2){
+            p1=p1->next;
+            p2=p2->next;
+        }
+        return p1;
+    }
+};
 2、hash表  时间O(m+n)，空间O(m)
 链接：https://www.nowcoder.com/questionTerminal/6ab1d9a29e88450685099d45c9e31e46
 来源：牛客网
