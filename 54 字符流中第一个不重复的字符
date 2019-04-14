@@ -91,7 +91,7 @@ public:
         int minIndex=INT_MAX;
         for(int i=0;i<256;i++){
             if(occurrence[i]>=0&&occurrence[i]<=minIndex){
-                ch=(char) i;
+                ch=(char) i;//ch=i;
                 minIndex=occurrence[i];
             }
         }
