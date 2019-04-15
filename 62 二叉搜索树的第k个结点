@@ -72,3 +72,24 @@ public:
         return target;
     }
 };
+190415:
+class Solution {
+public:
+    TreeNode* KthNode(TreeNode* pRoot, int k)
+    {
+        if(!pRoot||k<=0) return NULL;
+        int count=1;
+        return KthNodeCore(pRoot,k,count);
+    }
+
+    TreeNode* KthNodeCore(TreeNode* pRoot, int k, int &count){
+        TreeNode*res=NULL;
+        if(pRoot->left) res=KthNodeCore(pRoot->left,k,count);
+        if(res==NULL){
+            if(count==k) res=pRoot;
+            else count++;
+        }
+        if(res==NULL&&pRoot->right) res=KthNodeCore(pRoot->right,k,count);
+        return res;//整个递归过程，要么返回NULL要么返回第k小的节点
+    }
+};
