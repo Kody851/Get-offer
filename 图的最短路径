@@ -96,6 +96,6 @@ public:
             }
         }
         if(dist[B]<3) return 2;
-        else return 2+(dist[B]-1)/2
+        else return 2+(dist[B]-1)/2;
     }
 };
