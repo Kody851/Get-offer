@@ -26,6 +26,7 @@ public:
             invalid=true;
             return 0.0;
         }
+        else if(base==0 && exponent>=0) return 0.0;
         if(exponent==0) return 1.0;
         double res=1.0;
         for(int i=exponent;i!=0;i/=2){
