@@ -30,7 +30,7 @@ public:
         if(exponent==0) return 1.0;
         double res=1.0;
         for(int i=exponent;i!=0;i/=2){
-            if((i&0x1)==1) res*=base;
+            if((i&0x1)==1) res*=base;//初始若是奇数，则多乘以1个base；最后必是奇数，把累乘好的base赋给res。
             base*=base;
         }
         return exponent>0?res:1/res; 
