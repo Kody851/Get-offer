@@ -15,7 +15,7 @@ public:
     void helper(TreeNode* pRootOfTree, TreeNode*&pre){//pre的值需要更改，使用&
       /*完成双向链表的生成，箭头由左至右为升序，由右至左为降序。根节点仍不会变*/
         if(!pRootOfTree) return;
-        helper(pRootOfTree->left, pre);
+        helper(pRootOfTree->left, pre);//中序遍历
         pRootOfTree->left=pre;
         if(pre) pre->right=pRootOfTree;
         pre=pRootOfTree;
