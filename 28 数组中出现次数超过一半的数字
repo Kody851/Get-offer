@@ -24,12 +24,12 @@ public:
         int n=numbers.size();
         int val=numbers[0],count=1;
         for(int i=1;i<n;i++){
+            if(numbers[i]==val) count++;
+            else count--;
             if(count==0){
                 val=numbers[i];//最后一个把count设为1的数就是所求，它存在val中
                 count=1;
             }
-            if(numbers[i]==val) count++;
-            else count--;
         }
         //验证val的次数
         count=0;
