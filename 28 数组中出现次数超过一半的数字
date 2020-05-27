@@ -48,7 +48,7 @@ public:
         int start=0,end=n-1;
         int index=Partition(numbers,start,end);
         int mid=n>>1;
-        while(index!=mid){
+        while(index!=mid){//寻找中位数
             if(index<mid) {
                 start=index+1;
                 index=Partition(numbers,start,end);
@@ -68,13 +68,13 @@ public:
     int Partition(vector<int>&numbers,int start,int end){
         int small=start-1;
         for(int i=start;i<end;i++){
-            if(numbers[i]<numbers[end]){
+            if(numbers[i]<numbers[end]){//取numbers[end]为中枢数
                 small++;
                 if(small!=i) swap(numbers[small],numbers[i]);
             }
         }
         small++;
-        swap(numbers[small],numbers[end]);
-        return small;
+        swap(numbers[small],numbers[end]);//numbers[end]左边的比它小，右边的比它大
+        return small;//比中枢数小的数字个数
     }
 };
