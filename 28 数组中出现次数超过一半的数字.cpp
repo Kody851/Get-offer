@@ -1,8 +1,10 @@
+/*
 题目描述P205
 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。
 由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
+*/
 
-1、哈希表，时间O(n) 空间O(n)
+//1、哈希表，时间O(n) 空间O(n)
 class Solution {
 public:
     int MoreThanHalfNum_Solution(vector<int> numbers) {
@@ -16,7 +18,7 @@ public:
         return 0;
     }
 };
-2、数组  时间O(n) 空间无 （最优解！）
+//2、数组  时间O(n) 空间无 （最优解！）
 class Solution {
 public:
     int MoreThanHalfNum_Solution(vector<int> numbers) {
@@ -39,7 +41,7 @@ public:
         return count>n/2 ? val : 0;
     }
 };
-3、Partition函数（找第K大的数）。会修改原数组
+//3、Partition函数（找第K大的数）。会修改原数组
 class Solution {
 public:
     int MoreThanHalfNum_Solution(vector<int> numbers) {
