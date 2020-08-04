@@ -67,9 +67,7 @@ void BFS(int num, vector<pair<int, int>>&edge, vector<int>vexs){//给了节点�
 void BFS(int num, vector<vector<int>>& edge, vector<int>vexs){//给了节点数组
     vector<vector<int>>mat(num, vector<int>(num))={0};//邻接矩阵
     for(int i=0;i<num;i++){
-        for(int j=0;j<num;j++){
-            mat[edge[i][0]][edge[i][1]]=1;
-        }
+        mat[edge[i][0]][edge[i][1]]=1;
     }
     queue<int>q;
     bool *visited[num];
@@ -83,7 +81,7 @@ void BFS(int num, vector<vector<int>>& edge, vector<int>vexs){//给了节点数�
                 int temp = q.front();
                 q.pop();
                 for(int j=0;j<num;j++){
-                    if(!visited[j]&&mat[i][j]==1){
+                    if(!visited[j]&&mat[temp][j]==1){
                         visited[j]=true;
                         cout<<vexs[j];
                         q.push(j);
